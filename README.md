@@ -6,7 +6,7 @@ Template Inspiration : https://github.com/1y33/100Days
 ### Project Progress by Day
 | Day   | Files & Summaries                                                                                                                                                                                                                          |
 |-------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| day1  | **vec_add.cu**: GPU vector addition; basics of memory allocation/host-device transfer.                                                                 |
+| 1  | **vec_add.cu**: GPU vector addition; basics of memory allocation/host-device transfer.                                                                 |
 <!-- | day2  | **function.cu**: Use `__device__` function in kernel; per-thread calculations.                                                                                                                                                       |
 | day3  | **addMatrix.cu**: 2D matrix addition; map row/column indices to threads.<br>**anotherMatrix.cu**: Transform matrices with custom function; 2D index operations.                                                                       |
 | day4  | **layerNorm.cu**: Layer normalization using shared memory; mean/variance computation.                                                                                                                                                |
