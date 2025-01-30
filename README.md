@@ -70,26 +70,31 @@ Implemented 2D convolution using CUDA. Optimized performance using constant memo
 
 
 ---
-# Future Work
 
 ## Day 4
 ### File: `tile_matmul.cu`
 **Summary:**  
-Work on matrix multiplication but the tiled version.  
+Implemented the tiled version of matrix multiplication.
+**Results:**
 
-<!--**Learned:**  
-- The concept of reduction in parallel programming.
-- Techniques for minimizing warp divergence and balancing workload across threads.
-- How to use shared memory effectively in reduction operations.  
+<img width="160" alt="image" src="https://github.com/user-attachments/assets/882fc46e-0870-45e0-8397-4a7415efc686" />
+
+### File: `tile_conv.cu`
+Implemented the tiled version of 2D convolution.
+**Results:**
+
+
+**Learned:**  
+- The concept of shared memory in GPU architecture amd utilizing the concept of tiling in parallel programming.
+- How to use shared memory and constant memory effectively in matmul operations.
+  
 
 ### Reading:  
-- Finished **Chapter 3** of the PMPP book.  
-  - Learned about Scalable Parallel Execution including Resource Assignment and Thread Scheduling and Latency Tolerance -->
+- Finished **Chapter 5** of the PMPP book.  
+  - Learned about different types of memory in GPU such as shared, constant,etc and also boundary checks in tiling operations.
+- Finished second part of **Chapter 7** of the PMPP book where the tiled convolution is discussed.
 ---
-## Day 5
-### File: `tile_conv.cu`
-**Summary:**  
-Work on tiled conv.
+
 <!--
 **Learned:**  
 - How to calculate mean and variance in parallel using reduction algorithms.
@@ -100,7 +105,7 @@ Work on tiled conv.
 - Read **Chapter 4** of the PMPP book.  
   -  Learned about memory optimizations and strategies for GPU performance tuning.
 ---
-
+# Future Work
 ## Day 6
 ### File: `LayerNorm.cu`
 **Summary:**  
