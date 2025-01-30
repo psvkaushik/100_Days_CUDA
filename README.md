@@ -33,6 +33,11 @@ Implemented vector addition by writing a simple CUDA program. Explored how to la
 **Summary:**  
 Worked on matrix multiplication using CUDA. Designed the grid and block layout to handle 2D matrices in parallel, with each element processed by an individual thread.  
 
+**Results :**
+
+<img width="157" alt="image" src="https://github.com/user-attachments/assets/0c60b965-0612-4373-b766-b38f91806c13" />
+
+
 **Learned:**  
 - How to map 2D matrix data onto multiple threads.
 - Understanding thread indexing in 2D grids and blocks using `threadIdx`, `blockIdx`, `blockDim`, and `gridDim`.  
