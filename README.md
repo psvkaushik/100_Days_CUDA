@@ -35,7 +35,9 @@ Worked on matrix multiplication using CUDA. Designed the grid and block layout t
 
 **Results :**
 
-<img width="157" alt="image" src="https://github.com/user-attachments/assets/0c60b965-0612-4373-b766-b38f91806c13" />
+<img width="181" alt="image" src="https://github.com/user-attachments/assets/dcf07616-d840-4fbd-b69a-691ffd27bfb0" />
+
+
 
 
 **Learned:**  
@@ -55,6 +57,10 @@ Worked on matrix multiplication using CUDA. Designed the grid and block layout t
 ### File: `conv.cu`
 **Summary:**  
 Implemented 2D convolution using CUDA. Optimized performance using constant memory.  
+
+**Results :**
+
+<img width="157" alt="image" src="https://github.com/user-attachments/assets/0c60b965-0612-4373-b766-b38f91806c13" />
 
 **Learned:**  
 - Utilizing constant memory for better optimization  
