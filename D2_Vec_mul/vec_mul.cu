@@ -79,7 +79,7 @@ int main(void){
     }
     stop = clock();
     double cpu_time_used = (double)(stop - start)/ CLOCKS_PER_SEC;
-    cout << "The amount of time taken by the CPU is " << cpu_time_used * 1000 << " milliseconds"<<endl;
+    cout << "CPU Time " << cpu_time_used * 1000 << " ms"<<endl;
 
     // gpu_operation
     float *p_d= (float*)malloc(h * w*sizeof(float));
