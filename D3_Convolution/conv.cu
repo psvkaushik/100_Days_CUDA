@@ -133,7 +133,7 @@ int main() {
     convolution2DCPU(input, output, width, height, kernel);
     stop = clock();
     double cpu_time_used = (double)(stop - start) / CLOCKS_PER_SEC;
-    cout << "The amount of time taken by the CPU is " << cpu_time_used * 1000 << " ms" << endl;
+    cout << "CPU Time : " << cpu_time_used * 1000 << " ms" << endl;
 
 
     // Perform convolution on GPU
@@ -149,7 +149,7 @@ int main() {
 
     float gpu_time_used;
     cudaEventElapsedTime(&gpu_time_used, start_gpu, stop_gpu);
-    cout << "GPU Time: " << gpu_time_used << " ms" << endl;
+    cout << "GPU Time : " << gpu_time_used << " ms" << endl;
 
     // Compare CPU and GPU outputs
     if (compareMatrices(output, output_gpu, height, width)) {
