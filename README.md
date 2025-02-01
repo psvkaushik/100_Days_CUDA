@@ -79,10 +79,6 @@ Implemented the tiled version of matrix multiplication.
 
 <img width="160" alt="image" src="https://github.com/user-attachments/assets/882fc46e-0870-45e0-8397-4a7415efc686" />
 
-### File: `tile_conv.cu`
-Implemented the tiled version of 2D convolution.
-**Results:**
-
 
 **Learned:**  
 - The concept of shared memory in GPU architecture amd utilizing the concept of tiling in parallel programming.
@@ -92,9 +88,23 @@ Implemented the tiled version of 2D convolution.
 ### Reading:  
 - Finished **Chapter 5** of the PMPP book.  
   - Learned about different types of memory in GPU such as shared, constant,etc and also boundary checks in tiling operations.
-- Finished second part of **Chapter 7** of the PMPP book where the tiled convolution is discussed.
----
 
+---
+## Day 5
+### File: `tile_conv.cu`
+**Summary:**  
+Implemented the tiled version of 2D convolution.
+**Results:**
+
+```
+CPU Time : 73059.2 ms
+GPU Time : 1544.33 ms
+GPU Time Tiled: 1755.01 ms
+Matrices match!
+Conv Matrices match!
+```
+### Reading
+- Finished second part of **Chapter 7** of the PMPP book where the tiled convolution is discussed.
 <!--
 **Learned:**  
 - How to calculate mean and variance in parallel using reduction algorithms.
