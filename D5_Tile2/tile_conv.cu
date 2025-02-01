@@ -56,7 +56,7 @@ __global__ void conv_tiled_kernel(float* input, float* output, int height, int w
     }
 
     
-    __syncthreads();
+    // __syncthreads();
 
 
 }
@@ -186,8 +186,8 @@ bool compareMatrices(float *c, float *c_gpu, int m, int n, float tolerance = 1e-
 }
 
 int main() {
-    int height = 3200;
-    int width = 3200;
+    int height = 64000;
+    int width = 32000;
     int kernelHeight = 2 * Filter_Radius + 1;
     int kernelSize = kernelHeight * kernelHeight;
 
