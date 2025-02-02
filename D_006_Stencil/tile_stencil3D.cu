@@ -3,8 +3,9 @@
 #include <chrono>
 #include <cmath> // For fabs
 using namespace std;
-#define TILE_DIM 8
-#define OUT_TILE_DIM 6
+#define TILE_DIM 10
+#define OUT_TILE_DIM 8
+
 
 // Define the size of the 3D grid
 const int NX = 512;
@@ -96,7 +97,9 @@ int main() {
     for (int i = 0; i < size; ++i) {
         input[i] = 1.0f;
     }
-
+    cudaDeviceProp prop;
+    cudaError_t err = cudaGetDeviceProperties(&prop, 0);
+    cout<<"Max threads per block: " << prop.maxThreadsPerBlock << "\n"<< "Shared mem per block: " << prop.sharedMemPerBlock << " bytes\n";
     // Run CPU implementation
     auto start_cpu = std::chrono::high_resolution_clock::now();
     stencil_3d_cpu(input, cpu_output, NX, NY, NZ);

@@ -38,7 +38,7 @@ profile_nsys: $(TARGET) | $(PROFILE_DIR)
 		./$(TARGET)
 
 profile_ncu: $(TARGET) | $(PROFILE_DIR)
-	ncu $(NCU_FLAGS) \
+	ncu $(TARGET) \
 		-o $(PROFILE_DIR)/profile.ncu-rep \
 		--export $(PROFILE_DIR)/profile.ncu \
 		--force-overwrite \
