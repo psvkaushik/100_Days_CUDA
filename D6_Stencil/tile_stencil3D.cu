@@ -3,11 +3,13 @@
 #include <chrono>
 #include <cmath> // For fabs
 using namespace std;
+#define TILE_DIM 8
+#define OUT_TILE_DIM 6
 
 // Define the size of the 3D grid
-const int NX = 32;
-const int NY = 32;
-const int NZ = 32;
+const int NX = 512;
+const int NY = 512;
+const int NZ = 512;
 
 // Define the radius of the stencil (e.g., 1 for a 3x3x3 stencil)
 // const int RADIUS = 1;
@@ -34,27 +36,28 @@ void stencil_3d_cpu(const float* input, float* output, int nx, int ny, int nz) {
 }
 
 
-const int TILE_DIM = 4;  // Tile size for shared memory
+// const int TILE_DIM = 16;  // Tile size for shared memory
 
 __global__ void stencil_3d_gpu(const float* input, float* output, int nx, int ny, int nz) {
     // Shared memory tile
     __shared__ float tile[TILE_DIM][TILE_DIM][TILE_DIM];
 
     // Calculate global indices
-    int i = blockIdx.z * (TILE_DIM - 2) + threadIdx.z - 1;  // Adjust for halo
-    int j = blockIdx.y * (TILE_DIM - 2) + threadIdx.y - 1;  // Adjust for halo
-    int k = blockIdx.x * (TILE_DIM - 2) + threadIdx.x - 1;  // Adjust for halo
+    int i = blockIdx.z * OUT_TILE_DIM + threadIdx.z - 1;  
+    int j = blockIdx.y * OUT_TILE_DIM + threadIdx.y - 1;  
+    int k = blockIdx.x * OUT_TILE_DIM + threadIdx.x - 1; 
 
     // Load data into shared memory (with bounds checking)
     if (i >= 0 && i < nz && j >= 0 && j < ny && k >= 0 && k < nx) {
         tile[threadIdx.z][threadIdx.y][threadIdx.x] = input[i * ny * nx + j * nx + k];
-    } else {
-        tile[threadIdx.z][threadIdx.y][threadIdx.x] = 0.0f;  // Default value for out-of-bounds
+    } 
+     else {
+    tile[threadIdx.z][threadIdx.y][threadIdx.x] = 0.0f; // Optional: Initialize to zero if out of bounds
     }
     __syncthreads();
 
     // Perform stencil operation (only on interior elements)
-    if (i >= 1 && i < nz - 1 && j >= 1 && j < ny - 1 && k >= 1 && k < nx - 1) {
+        if (i >= 1 && i < nz - 1 && j >= 1 && j < ny - 1 && k >= 1 && k < nx - 1) {
         if (threadIdx.z >= 1 && threadIdx.z < TILE_DIM - 1 && 
             threadIdx.y >= 1 && threadIdx.y < TILE_DIM - 1 && 
             threadIdx.x >= 1 && threadIdx.x < TILE_DIM - 1) {
@@ -111,9 +114,9 @@ int main() {
 
     // Define block and grid sizes for CUDA
     dim3 blockSize(TILE_DIM, TILE_DIM, TILE_DIM);
-    dim3 gridSize((NX + blockSize.z - 1) / blockSize.z,
-                  (NY + blockSize.y - 1) / blockSize.y,
-                  (NX + blockSize.x - 1) / blockSize.x);
+    dim3 gridSize((NZ + OUT_TILE_DIM - 1) / OUT_TILE_DIM,
+                  (NY + OUT_TILE_DIM- 1) / OUT_TILE_DIM,
+                  (NX + OUT_TILE_DIM - 1) / OUT_TILE_DIM);
 
     // Run GPU implementation
     auto start_gpu = std::chrono::high_resolution_clock::now();
@@ -143,7 +146,7 @@ int main() {
     //     cout << cpu_output[i] << " ";
     // }
     // cout << endl;
-    // cout << "GPU" << endl;
+    // // cout << "GPU" << endl;
     // for(int i=0;i<size;i++){
     //     cout << gpu_output[i] << " ";
     // }
