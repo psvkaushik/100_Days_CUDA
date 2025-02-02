@@ -105,6 +105,25 @@ Conv Matrices match!
 ```
 ### Reading
 - Finished second part of **Chapter 7** of the PMPP book where the tiled convolution is discussed.
+---
+## Day 6
+### File: `tile_stencil3D.cu`
+**Summary:**  
+Implemented the basic tiled version of stencil.
+**Results:**
+
+```
+Max threads per block: 1024
+Shared mem per block: 49152 bytes
+CPU time: 0.223968 seconds
+GPU time: 0.00741968 seconds
+CPU and GPU results match!
+```
+**Learned:**  
+- The concept of stencil, and how it is useful in calculating the gradients.
+- THE IMPORTANCE OF KNOWING YOUR HARDWARE. Didn't check the maximum threads per block my gpu can accomodate, so was facing issues with halo overwriting as the launch kernel had less threads than what I assumed it would.
+### Reading
+- Finished first part of **Chapter 8** of the PMPP book where the tiled stencil 3D is discussed.
 <!--
 **Learned:**  
 - How to calculate mean and variance in parallel using reduction algorithms.
