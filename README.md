@@ -124,6 +124,24 @@ CPU and GPU results match!
 - THE IMPORTANCE OF KNOWING YOUR HARDWARE. Didn't check the maximum threads per block my gpu can accomodate, so was facing issues with halo overwriting as the launch kernel had less threads than what I assumed it would.
 ### Reading
 - Finished first part of **Chapter 8** of the PMPP book where the tiled stencil 3D is discussed.
+---
+## Day 7
+### File: `reduction.cu`
+**Summary:**  
+Implemented the basic version of reduction.
+
+**Learned:**  
+- The concept of tree based reduction, and how it is used in various applications.
+### Reading
+- Finished first part of **Chapter 10** of the PMPP book where reduction is discussed.
+---
+## Day 8
+### File: `reduction_eff.cu`
+**Summary:**  
+Implemented a more efficient version of reduction using shared memory.
+
+### Reading
+- Finished second half(10.3 and later) of **Chapter 10** of the PMPP book where reduction is discussed.
 <!--
 **Learned:**  
 - How to calculate mean and variance in parallel using reduction algorithms.
