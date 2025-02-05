@@ -139,9 +139,40 @@ Implemented the basic version of reduction.
 ### File: `reduction_eff.cu`
 **Summary:**  
 Implemented a more efficient version of reduction using shared memory.
+**Results**
+```
+Max threads per block: 1024
+Shared mem per block: 49152 bytes
+CPU time: 0.0271867 seconds
+CPU result: 1.67771e+07
+GPU time: 0.00112141 seconds
+GPU result: 1.67773e+07
+```
 
 ### Reading
 - Finished second half(10.3 and later) of **Chapter 10** of the PMPP book where reduction is discussed.
+---
+## Day 9
+### File: `tc_red.cu`
+**Summary:**  
+Implemented an even more efficent version of reduction by utilizing thread coarsening, and by decreasing the number of threads launched acheived remarkable speed up compared to yesterday's results.
+
+**Results**
+```
+Max threads per block: 1024
+Shared mem per block: 49152 bytes
+CPU time: 0.027211 seconds
+CPU result: 1.67771e+07
+GPU time: 0.00051667 seconds
+GPU result: 1.67773e+07
+
+```
+**Learned:**  
+- The concept of thread coarsening and its application to reduction.
+- Efficiently launching threads based on the coarsening factor to reduce the number of idle threads
+### Reading
+- Finished  **Chapter 10** of the PMPP book where reduction using thread coarsening is discussed.
+---
 <!--
 **Learned:**  
 - How to calculate mean and variance in parallel using reduction algorithms.
