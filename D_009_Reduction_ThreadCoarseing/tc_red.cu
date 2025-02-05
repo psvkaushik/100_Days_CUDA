@@ -12,7 +12,7 @@ __global__ void reduction_gpu(float *input, float *output, int size) {
     __shared__ float shared_data[THREADS_PER_BLOCK];
 
     int tid = threadIdx.x;
-    int idx = blockIdx.x * blockDim.x * COARSE_FACTOR + threadIdx.x;
+    int idx = blockIdx.x * blockDim.x*COARSE_FACTOR  + threadIdx.x;
     float temp = 0.0f;
     // Load data into shared memory
     for (int i =0; i< COARSE_FACTOR; i++){
@@ -76,7 +76,7 @@ int main() {
 
     // Define grid and block sizes
     int numThreads = THREADS_PER_BLOCK;
-    int numBlocks = (size + numThreads - 1) / numThreads;
+    int numBlocks = (size + numThreads*COARSE_FACTOR - 1) / (COARSE_FACTOR*numThreads);
     float *gpu_output = new float[numBlocks];
 
     cudaMalloc((void**)&d_output, numBlocks * sizeof(float));

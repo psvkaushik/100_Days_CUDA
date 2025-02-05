@@ -1,0 +1,4 @@
+==808358== NVPROF is profiling process 808358, command: ./tc_red
+==808358== Profiling application: ./tc_red
+==808358== Profiling result:
+No events/metrics were profiled.
