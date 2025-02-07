@@ -173,6 +173,30 @@ GPU result: 1.67773e+07
 ### Reading
 - Finished  **Chapter 10** of the PMPP book where reduction using thread coarsening is discussed.
 ---
+## Day 10
+### File: `softmax.cu`
+**Summary** 
+
+Implemented a kernel to perform Safe Softmax.
+
+**Results**
+
+``` Work in progress to get a good benchmarking code ```
+
+---
+## Day 11
+### File: `softmax.cu`
+**Summary** 
+
+Implemented a kernel to perform Online Softmax.
+
+**Results**
+
+``` Work in progress to get a good benchmarking code ```
+
+**Videos**
+- Watched Umar's video on Flash Attention from scratch to get an understanding of how Online Softmax is faster than the plain one.
+---
 <!--
 **Learned:**  
 - How to calculate mean and variance in parallel using reduction algorithms.
