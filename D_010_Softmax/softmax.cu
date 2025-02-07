@@ -1,9 +1,8 @@
-#include "torch/extension.h"
-#include <cuda_runtime_api.h>
-#include <c10/cuda/CUDAStream.h>
+#include <torch/extension.h>
+#include <cuda_runtime.h>
 
 // CUDA Kernel for Online Softmax
-__global__ void online_softmax_kernel(const float* input, float* output, int rows, int cols) {
+__global__ void softmax_kernel(const float* input, float* output, int rows, int cols) {
     int row = blockIdx.x * blockDim.x + threadIdx.x;
 
     if (row < rows) {
@@ -24,7 +23,7 @@ __global__ void online_softmax_kernel(const float* input, float* output, int row
 }
 
 // Host function to launch the kernel
-void online_softmax_launcher(const torch::Tensor& input, torch::Tensor& output) {
+void softmax_launcher(const torch::Tensor& input, torch::Tensor& output) {
     const auto rows = input.size(0);
     const auto cols = input.size(1);
 
@@ -41,5 +40,5 @@ void online_softmax_launcher(const torch::Tensor& input, torch::Tensor& output) 
 
 // PyTorch binding
 PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
-    m.def("online_softmax", &online_softmax_launcher, "Online Softmax CUDA");
+    m.def("softmax", &online_softmax_launcher, "Softmax CUDA");
 }
