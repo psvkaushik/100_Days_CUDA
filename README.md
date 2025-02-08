@@ -185,7 +185,7 @@ Implemented a kernel to perform Safe Softmax.
 
 ---
 ## Day 11
-### File: `softmax.cu`
+### File: `online_softmax.cu`
 **Summary** 
 
 Implemented a kernel to perform Online Softmax.
