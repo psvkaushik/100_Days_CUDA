@@ -1,10 +1,9 @@
 #include <iostream>
 #include <cuda_runtime.h>
-#include <math.h>  // For expf
+#include <math.h>  
 
-#define N 10   // Size of the array
+#define N 10   
 
-// CUDA kernel to compute Tanh activation function
 __global__ void tanh_activation(float *input, int n) {
     int idx = threadIdx.x + blockIdx.x * blockDim.x;
     if (idx < n) {
